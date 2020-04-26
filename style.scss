@@ -18,11 +18,13 @@ html, body
 	text-transform: uppercase;
 }
 
-header
+main
 {
 
 	text-align: center;
 	margin: 100px;
+	display: flex;
+	flex-flow: column nowrap;
 
 	h1
 	{
@@ -30,6 +32,12 @@ header
 		margin: 40px;
 		white-space: nowrap;
 		font-weight: bold;
+	}
+
+	#row
+	{
+		display: flex;
+		flex-flow: row nowrap;
 	}
 
 	h2
@@ -62,5 +70,7 @@ header
 		color: black;
 		display: inline-block;
 		border-radius: 30px;
+
+		user-select: none;
 	}
 }

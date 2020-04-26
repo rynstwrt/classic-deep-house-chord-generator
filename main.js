@@ -59,7 +59,8 @@ document.getElementById("generatebutton").addEventListener("click", () =>
 	{
 		return minor[key];
 	});
-	const firstChord = minorChords[Math.floor(Math.random() * minorChords.length)];
+	const possibleFirstChords = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
+	const firstChord = minor[possibleFirstChords[Math.floor(Math.random() * possibleFirstChords.length)]];
 	const key = firstChord[0];
 	console.log("firstkey: " + firstChord);
 	chords.push(firstChord);
