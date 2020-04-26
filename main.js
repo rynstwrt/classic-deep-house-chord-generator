@@ -72,10 +72,10 @@ document.getElementById("generatebutton").addEventListener("click", () =>
 	while (distinctNums.length < 3)
 	{
 		const rNum = Math.floor((Math.random() * 5) + 2);
-		if (distinctNums.includes(rNum))
-			continue;
+		if (!distinctNums.includes(rNum))
+			distinctNums.push(rNum);
 
-		distinctNums.push(rNum);
+
 	}
 	distinctNums.sort();
 
