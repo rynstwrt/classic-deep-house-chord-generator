@@ -32,7 +32,7 @@ const minor = {
 
 /* chord progression chart */
 const arow = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
-const brow = ['B', 'C#', 'D', 'E', 'F#', 'G', 'A'];
+const brow = ['B', 'C#', 'D', 'E', 'Gb', 'G', 'A'];
 const crow = ['C', 'D', 'Eb', 'F', 'G', 'A', 'Bb', 'C'];
 const drow = ['D', 'E', 'F', 'G', 'A', 'Bb', 'C'];
 const erow = ['E', 'F#', 'G', 'A', 'B', 'C', 'D'];
@@ -62,7 +62,6 @@ document.getElementById("generatebutton").addEventListener("click", () =>
 	const possibleFirstChords = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
 	const firstChord = minor[possibleFirstChords[Math.floor(Math.random() * possibleFirstChords.length)]];
 	const key = firstChord[0];
-	console.log("firstkey: " + firstChord);
 	chords.push(firstChord);
 
 
@@ -100,14 +99,16 @@ document.getElementById("generatebutton").addEventListener("click", () =>
 		if (num === 2 || num === 5 || num === 6)
 		{
 			  // major
-			  let newChord = major[keyRow[num]];
+			  const newChord = major[keyRow[num]];
+			  console.log("keyrow[num]: " + keyRow[num]);
+			  console.log("newchord: " + newChord);
 			  chords.push(newChord);
 		}
 		else
 		{
 			console.log(keyRow[num]);
 			 // minor
-			 let newChord = minor[keyRow[num]];
+			 const newChord = minor[keyRow[num]];
 			 chords.push(newChord);
 		}
 	});
