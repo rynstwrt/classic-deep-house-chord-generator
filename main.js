@@ -41,8 +41,7 @@ const grow = ['G', 'A', 'Bb', 'C', 'D', 'Eb', 'F'];
 
 
 //const synth = new Tone.PolySynth(4, Tone.Synth).toMaster();
-const synth = new Tone.PolySynth(4, Tone.Synth, {
-
+const synth = new Tone.MonoSynth(4, Tone.PluckSynth, {
 }).toMaster();
 
 
@@ -121,7 +120,7 @@ document.getElementById("generatebutton").addEventListener("click", () =>
 		chord = chord.map(i => i + 4);
 		Tone.Transport.schedule((time) =>
 		{
-			synth.triggerAttackRelease(chord, '8n', time);
+			synth.triggerAttackRelease(chord[0], '8n', time);
 		}, i / 2);
 	}
 
