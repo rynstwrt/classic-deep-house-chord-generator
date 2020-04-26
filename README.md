@@ -1,4 +1,4 @@
-# minor-7chord-progression-generator
-Generate minor 7chord progressions.
+# minor-7th-chord-progression-generator
+Generate minor 7th chord progressions.
 
-https://rynstwrt.github.io/minor-7chord-progression-generator/
+https://rynstwrt.github.io/minor-7th-chord-progression-generator/
