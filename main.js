@@ -1,62 +1,75 @@
 /* MAJOR 7CHORDS:  */
 const major = {
 	'C': ['C', 'E', 'G', 'B'],
-	'Db': ['Db', 'F', 'G#', 'C'],
-	'D': ['D', 'F#', 'A', 'Db'],
-	'Eb': ['Eb', 'G', 'Bb', 'D'],
-	'E': ['E', 'G#', 'B', 'Eb'],
-	'F': ['F', 'A', 'C', 'E'],
-	'F#': ['F#', 'Bb', 'Db', 'F'],
-	'G': ['G', 'B', 'D', 'F#'],
-	'G#': ['G#', 'C', 'Eb', 'G'],
-	'A': ['A', 'Db', 'E', 'G#'],
-	'Bb': ['Bb', 'D', 'F', 'A'],
-	'B': ['B', 'Eb', 'F#', 'Bb']
+	'C#': ['D', 'E', 'Ab', 'C'],
+	'D': ['D', 'F', 'A', 'C'],
+	'Eb': ['Eb', 'F#', 'Bb', 'C#'],
+	'E': ['E', 'G', 'B', 'D'],
+	'F': ['F', 'Ab', 'C', 'Eb'],
+	'F#': ['F#', 'A', 'C#', 'E'],
+	'G': ['G', 'Bb', 'D', 'F'],
+	'Ab': ['Ab', 'B', 'Eb', 'F#'],
+	'A': ['A', 'C', 'E', 'G'],
+	'Bb': ['Bb', 'C#', 'F', 'Ab'],
+	'B': ['B', 'D', 'F#', 'A']
 };
 
 /* MINOR 7CHORDS:  */
 const minor = {
 	'C': ['C', 'Eb', 'G', 'Bb'],
-	'Db': ['Db', 'Fb', 'G#', 'Cb'],
+	'C#': ['D', 'E', 'Ab', 'B'],
 	'D': ['D', 'F', 'A', 'C'],
-	'Eb': ['Eb', 'F#', 'Bb', 'Db'],
+	'Eb': ['Eb', 'F#', 'Bb', 'C#'],
 	'E': ['E', 'G', 'B', 'D'],
-	'F': ['F', 'G#', 'C', 'Eb'],
-	'F#': ['F#', 'A', 'Db', 'Fb'],
+	'F': ['F', 'Ab', 'C', 'Eb'],
+	'F#': ['F#', 'A', 'C#', 'E'],
 	'G': ['G', 'Bb', 'D', 'F'],
-	'G#': ['G#', 'Cb', 'Eb', 'F#'],
+	'Ab': ['Ab', 'B', 'Eb', 'F#'],
 	'A': ['A', 'C', 'E', 'G'],
-	'Bb': ['Bb', 'Db', 'F', 'G#'],
+	'Bb': ['Bb', 'C#', 'F', 'Ab'],
 	'B': ['B', 'D', 'F#', 'A']
 };
 
 /* chord progression chart */
 const arow = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
 const brow = ['B', 'C#', 'D', 'E', 'F#', 'G', 'A'];
-const crow = ['C', 'D', 'Eb', 'F', 'G', 'A', 'Bb', 'C'];
+const crow = ['C', 'D', 'Eb', 'F', 'G', 'Ab', 'Bb'];
 const drow = ['D', 'E', 'F', 'G', 'A', 'Bb', 'C'];
 const erow = ['E', 'F#', 'G', 'A', 'B', 'C', 'D'];
-const frow = ['F', 'G', 'G#', 'Bb', 'C', 'Db', 'Eb'];
+const frow = ['F', 'G', 'Ab', 'Bb', 'C', 'C#', 'Eb'];
 const grow = ['G', 'A', 'Bb', 'C', 'D', 'Eb', 'F'];
 
 
 
 function getWhichRow(key)
 {
-	if (key === 'A' || key  === 'G#')
-		return arow;
-	else if (key === 'B' || key ==="Bb")
-		return brow;
-	else if (key === 'C' || key ==="Cb")
-		return crow;
-	else if (key === 'D' || key ==="Db")
-		return drow;
-	else if (key === 'E' || key ==="Eb")
-		return erow;
-	else if (key === 'F' || key ==="Fb")
-		return frow;
-	else if (key === 'G' || key ==="F#")
-		return grow;
+	switch(key)
+	{
+		case 'A':
+			return  arow;
+			break;
+		case 'B':
+			return brow;
+			break;
+		case 'C':
+			return crow;
+			break;
+		case 'D':
+			return drow;
+			break;
+		case 'E':
+			return erow;
+			break;
+		case 'F':
+			return frow;
+			break;
+		case 'G':
+			return grow;
+			break;
+		default:
+			return 'bruh';
+			break;
+	}
 }
 
 
@@ -64,10 +77,10 @@ function getWhichRow(key)
 function decideWhichPattern()
 {
 	const distinctNums = [];
-	// get three distinct numbers for indexes representing i, iio, III, iv, v, VI, VII
+	// get three numbers for indexes representing i, iio, III, iv, v, VI, VII
 	while (distinctNums.length < (document.getElementById("numChordsSelect").value - 1))
 	{
-		const rNum = Math.floor((Math.random() * 5) + 2);
+		const rNum = Math.floor((Math.random() * 5) + 1);
 		if (!distinctNums.includes(rNum))
 			distinctNums.push(rNum);
 	}
@@ -86,7 +99,6 @@ function selectFirstChord()
 	});
 	const possibleFirstChords = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
 
-	console.log( minor[possibleFirstChords[Math.floor(Math.random() * possibleFirstChords.length)]]);
 	return minor[possibleFirstChords[Math.floor(Math.random() * possibleFirstChords.length)]];
 }
 
@@ -120,11 +132,12 @@ function getNextChords(distinctNums, chosenRow)
 
 function playChords(chords)
 {
+	console.log(chords);
 	const octave = document.getElementById("octaveSelect").value;
 	for (let i = 0; i < chords.length; i++)
 	{
 		let chord = chords[i];
-		chord = chord.map(i => i + octave);
+		chord = chord.map(x => x + octave);
 		Tone.Transport.schedule((time) =>
 		{
 			synth.triggerAttackRelease(chord[0], '8n', time);
@@ -150,6 +163,7 @@ document.getElementById("generatebutton").addEventListener("click", () =>
 	Tone.Transport.stop();
 
 	const chords = [];
+	const nextChord = [];
 
 	const firstChord = selectFirstChord();
 	chords.push(firstChord);
@@ -159,10 +173,10 @@ document.getElementById("generatebutton").addEventListener("click", () =>
 	const key = firstChord[0];
 	const chosenRow = getWhichRow(key);
 
-	const nextChords = getNextChords(distinctNums, chosenRow);
+	nextChords = getNextChords(distinctNums, chosenRow);
 	nextChords.forEach(chord => { chords.push(chord) });
 
-	nextChords.unshift(firstChord)
+	nextChords.unshift(firstChord);
 	playChords(nextChords);
 
 	let generatedText = "";
