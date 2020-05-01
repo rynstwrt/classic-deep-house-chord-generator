@@ -156,7 +156,7 @@ function getMajorMinor(index)
 
 
 
-const synth = new Tone.MonoSynth(4, Tone.PluckSynth).toMaster();
+const synth = new Tone.DuoSynth().toMaster();
 document.getElementById("generatebutton").addEventListener("click", () =>
 {
 	synth.triggerRelease();
