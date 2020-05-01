@@ -46,7 +46,7 @@ function getWhichRow(key)
 	switch(key)
 	{
 		case 'A':
-			return  arow;
+			return arow;
 			break;
 		case 'B':
 			return brow;
@@ -67,7 +67,7 @@ function getWhichRow(key)
 			return grow;
 			break;
 		default:
-			return 'bruh';
+			return 'error';
 			break;
 	}
 }
@@ -77,8 +77,10 @@ function getWhichRow(key)
 function decideWhichPattern()
 {
 	const distinctNums = [];
+	const numChords = document.getElementById("numChordsSelect").value - 1;
+
 	// get three numbers for indexes representing i, iio, III, iv, v, VI, VII
-	while (distinctNums.length < (document.getElementById("numChordsSelect").value - 1))
+	while (distinctNums.length < numChords)
 	{
 		const rNum = Math.floor((Math.random() * 5) + 1);
 		if (!distinctNums.includes(rNum))
@@ -132,16 +134,24 @@ function getNextChords(distinctNums, chosenRow)
 
 function playChords(chords)
 {
-	console.log(chords);
+
+	synth.triggerRelease();
+	Tone.Transport.stop();
+
 	const octave = document.getElementById("octaveSelect").value;
+	chords = chords.map(x => x.map(y => y + octave));
+
+	console.log(chords.length);
+
 	for (let i = 0; i < chords.length; i++)
 	{
 		let chord = chords[i];
-		chord = chord.map(x => x + octave);
+
 		Tone.Transport.schedule((time) =>
 		{
+			console.log('triggerd');
 			synth.triggerAttackRelease(chord[0], '8n', time);
-		}, i / 2);
+		}, (i / 2));
 	}
 
 	Tone.Transport.toggle();
@@ -156,11 +166,10 @@ function getMajorMinor(index)
 
 
 
-const synth = new Tone.DuoSynth().toMaster();
+const synth = new Tone.Synth().toMaster();
 document.getElementById("generatebutton").addEventListener("click", () =>
 {
-	synth.triggerRelease();
-	Tone.Transport.stop();
+
 
 	const chords = [];
 	const nextChord = [];
