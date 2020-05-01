@@ -136,46 +136,25 @@ function playChords(chords)
 {
 
 	synth.triggerRelease();
-	Tone.Transport.toggle();
+	Tone.Transport.stop();
 
 	const octave = document.getElementById("octaveSelect").value;
 	chords = chords.map(x => x.map(y => y + octave));
-	firstNotes = chords.map(x => x = x[0]);
 
+	console.log(chords.length);
 
-
-	// console.log(chords.length);
-	//
-	// for (let i = 0; i < chords.length; i++)
-	// {
-	// 	let chord = chords[i];
-	//
-	// 	Tone.Transport.schedule((time) =>
-	// 	{
-	// 		console.log('triggerd');
-	// 		synth.triggerAttackRelease(chord[0], '8n', time);
-	// 	}, (i / 2));
-	// }
-	//
-	// Tone.Transport.toggle();
-
-	const sequence = [];
-
-	for (let i = 0; i < firstNotes.length; i++)
+	for (let i = 0; i < chords.length; i++)
 	{
-		const note = {};
-		note.time = ((i == 0) ? 0 : ("0:" + (i / 2) + ":0"));
-		note.note = firstNotes[i];
-		sequence.push(note);
+		let chord = chords[i];
+
+		Tone.Transport.schedule((time) =>
+		{
+			console.log('triggerd');
+			synth.triggerAttackRelease(chord[0], '8n', time);
+		}, (i / 2));
 	}
 
-	const part = new Tone.Part((time, event) =>
-	{
-		synth.triggerAttackRelease(event.note, '8n', event.note.time);
-	}, sequence);
-
-	part.start(0);
-
+	Tone.Transport.toggle();
 }
 
 
@@ -190,9 +169,6 @@ function getMajorMinor(index)
 const synth = new Tone.Synth().toMaster();
 document.getElementById("generatebutton").addEventListener("click", () =>
 {
-
-	Tone.Transport.stop();
-	Tone.Transport.cancel();
 
 
 	const chords = [];
