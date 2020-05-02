@@ -83,19 +83,33 @@ function getWhichRow(key)
 
 function decideWhichPattern()
 {
-	const distinctNums = [];
 	const numChords = document.getElementById(numChordsId).value - 1;
 
-	// get three numbers for indexes representing i, iio, III, iv, v, VI, VII
-	while (distinctNums.length < numChords)
-	{
-		const rNum = Math.floor((Math.random() * 5) + 1);
-		if (!distinctNums.includes(rNum))
-			distinctNums.push(rNum);
-	}
-	distinctNums.sort();
+	// get numbers for indexes representing i, iio, III, iv, v, VI, VII
+	// these patterns are same as normal chord progressions, but minus 1.
+	const patternsFour = [[5, 2, 6], [1, 4, 0], [5, 3, 4], [5, 1, 4], [4, 5, 3], [3, 5, 4], [2, 3, 4], [3, 0, 4], [3, 1, 4]];
+	const patternsThree = [[3, 6], [3, 4], [5, 6], [3, 0]];
 
-	return distinctNums;
+	let pattern = [];
+	switch (numChords)
+	{
+		case 2:
+		 	pattern = patternsThree;
+			break;
+		case 3:
+			pattern = patternsFour;
+			break;
+		default:
+			pattern = "error";
+			break;
+	}
+
+	const randNum = Math.floor((Math.random() * (pattern.length - 1)));
+	console.log(pattern.length);
+	console.log(randNum);
+	console.log(pattern);
+
+	return pattern[randNum];
 }
 
 
@@ -141,6 +155,7 @@ function getNextChords(distinctNums, chosenRow)
 
 function playChords(chords)
 {
+	console.log(chords);
 	const octave = document.getElementById(octaveId).value;
 	chords = chords.map(x => x.map(y => y + octave));
 	const firstNotes = chords.map(x => x = x[0]);

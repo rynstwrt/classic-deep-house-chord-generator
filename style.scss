@@ -62,21 +62,22 @@ section
 	background-color: $bg-accent;
 	border-radius: 4px;
 	flex-grow: 1;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
 
 	#textWrapper
 	{
 
 		display: none;
 		margin: 0 auto;
-		max-width: 180px;
 		white-space: pre;
-		height: 100%;
 
 		h2
 		{
 			text-align: left;
-			font-size: 1.6rem;
-			line-height: 2rem;
+			font-size: 10vw;
+			line-height: 3.5rem;
 			vertical-align: center;
 		}
 	}
@@ -107,6 +108,7 @@ footer
 			border-radius: 50px;
 			padding: 8px 0;
 			margin: 40px auto;
+			font-size: 1rem;
 		}
 
 		a
