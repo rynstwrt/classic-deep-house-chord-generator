@@ -1,6 +1,7 @@
 const generateButtonId = "generateButton";
-const generatedTextWrapperId = "generatedTextWrapper";
-const numChordsId = "numChordsSelect";
+const generatedTextWrapperId = "textWrapper";
+const textSelector = "#textWrapper h2";
+const numChordsId = "chordCountSelect";
 const octaveId = "octaveSelect";
 
 
@@ -205,5 +206,7 @@ document.getElementById(generateButtonId).addEventListener("click", () =>
 		generatedText += chord.join(" ");
 		generatedText += "\r\n";
 	});
-	document.getElementById(generatedTextWrapperId).textContent = generatedText;
+
+	document.getElementById(generatedTextWrapperId).style.display = "block";
+	document.querySelector(textSelector).textContent = generatedText;
 });
