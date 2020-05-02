@@ -11,13 +11,13 @@
 	</head>
 
 	<body>
-		<main>
+		<header>
 
 			<h1>Minor 7th Chord Progression Generator</h1>
 
-			<div class="row">
-				<p>Number of Chords: </p>
-				<select id="numChordsSelect">
+			<div>
+				<h4># Chords: </h4>
+				<select id="chordCountSelect">
 					<option value="2">2</option>
 					<option value="3">3</option>
 					<option selected value="4">4</option>
@@ -25,32 +25,32 @@
 					<option value="6">6</option>
 				</select>
 			</div>
-
-			<div class="row">
-				<p>Preview Octave: </p>
+			<div>
+				<h4>Preview Octave: </h4>
 				<select id="octaveSelect">
 					<option value="2">2</option>
-					<option selected value="3">3</option>
-					<option value="4">4</option>
+					<option value="3">3</option>
+					<option selected value="4">4</option>
 					<option value="5">5</option>
 					<option value="6">6</option>
 				</select>
 			</div>
-
-			<div id="generatedtextwrapper">
-				<h2 id="generatedtext"></h2>
-			</div>
+		</header>
 
 
 
-			<div id="generatebutton"><p>Generate</p></div>
-			<footer>
+		<section id="generatedTextWrapper">
 
-				<p>
-					Built using <a href="https://github.com/Tonejs/Tone.js/" target="_blank">Tone.js</a>
-				</p>
-			</footer>
-		</main>
+		</section>
+
+
+
+		<footer>
+			<div id="generateButton"><p>Generate</p></div>
+			<p>
+				Built using <a href="https://github.com/Tonejs/Tone.js/" target="_blank">Tone.js</a>
+			</p>
+		</footer>
 	</body>
 
 	<script src="main.js"></script>

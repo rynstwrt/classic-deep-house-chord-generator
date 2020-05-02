@@ -1,3 +1,9 @@
+const generateButtonId = "generateButton";
+const generatedTextWrapperId = "generatedTextWrapper";
+const numChordsId = "numChordsSelect";
+const octaveId = "octaveSelect";
+
+
 /* MAJOR 7CHORDS:  */
 const major = {
 	'C': ['C', 'E', 'G', 'B'],
@@ -77,7 +83,7 @@ function getWhichRow(key)
 function decideWhichPattern()
 {
 	const distinctNums = [];
-	const numChords = document.getElementById("numChordsSelect").value - 1;
+	const numChords = document.getElementById(numChordsId).value - 1;
 
 	// get three numbers for indexes representing i, iio, III, iv, v, VI, VII
 	while (distinctNums.length < numChords)
@@ -134,7 +140,7 @@ function getNextChords(distinctNums, chosenRow)
 
 function playChords(chords)
 {
-	const octave = document.getElementById("octaveSelect").value;
+	const octave = document.getElementById(octaveId).value;
 	chords = chords.map(x => x.map(y => y + octave));
 	const firstNotes = chords.map(x => x = x[0]);
 
@@ -167,7 +173,7 @@ function getMajorMinor(index)
 
 
 const synth = new Tone.Synth().toMaster();
-document.getElementById("generatebutton").addEventListener("click", () =>
+document.getElementById(generateButtonId).addEventListener("click", () =>
 {
 
 	Tone.Transport.stop();
@@ -199,5 +205,5 @@ document.getElementById("generatebutton").addEventListener("click", () =>
 		generatedText += chord.join(" ");
 		generatedText += "\r\n";
 	});
-	document.getElementById("generatedtext").textContent = generatedText;
+	document.getElementById(generatedTextWrapperId).textContent = generatedText;
 });
