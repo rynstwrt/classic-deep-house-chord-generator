@@ -118,5 +118,60 @@ footer
 		}
 	}
 
+}
 
+
+@media screen and (min-width: 573px)
+{
+	header
+	{
+		h1
+		{
+			font-size: 3rem;
+			line-height: 3rem;
+		}
+	}
+
+	section
+	{
+		#textWrapper
+		{
+			h2
+			{
+				line-height: 6rem;
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 800px)
+{
+	header
+	{
+		h4
+		{
+			font-size: 1.1rem;
+		}
+	}
+
+	section
+	{
+		margin: 0 auto;
+		max-width: 800px;
+		width: 800px;
+
+		#textWrapper
+		{
+			h2
+			{
+				font-size: 4rem;
+				line-height: 8rem;
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 1000px)
+{
+	
 }
