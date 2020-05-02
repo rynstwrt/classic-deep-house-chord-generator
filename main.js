@@ -87,7 +87,7 @@ function decideWhichPattern()
 
 	// get numbers for indexes representing i, iio, III, iv, v, VI, VII
 	// these patterns are same as normal chord progressions, but minus 1.
-	const patternsFour = [[5, 2, 6], [1, 4, 0], [5, 3, 4], [5, 1, 4], [4, 5, 3], [3, 5, 4], [2, 3, 4], [3, 0, 4], [3, 1, 4]];
+	const patternsFour = [[5, 2, 6], [1, 4, 0], [5, 3, 4], [5, 1, 4], [4, 5, 3], [3, 5, 4], [2, 3, 4], [3, 0, 4], [3, 1, 4], [4, 0, 3], [4, 5, 4], [6, 0, 1], [2, 3, 6]];
 	const patternsThree = [[3, 6], [3, 4], [5, 6], [3, 0]];
 
 	let pattern = [];
