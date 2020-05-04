@@ -8,32 +8,42 @@ const octaveId = "octaveSelect";
 /* MAJOR 7CHORDS:  */
 const major = {
 	'C': ['C', 'E', 'G', 'B'],
-	'C#': ['D', 'E', 'Ab', 'C'],
-	'D': ['D', 'F', 'A', 'C'],
-	'Eb': ['Eb', 'F#', 'Bb', 'C#'],
-	'E': ['E', 'G', 'B', 'D'],
-	'F': ['F', 'Ab', 'C', 'Eb'],
-	'F#': ['F#', 'A', 'C#', 'E'],
-	'G': ['G', 'Bb', 'D', 'F'],
-	'Ab': ['Ab', 'B', 'Eb', 'F#'],
-	'A': ['A', 'C', 'E', 'G'],
-	'Bb': ['Bb', 'C#', 'F', 'Ab'],
-	'B': ['B', 'D', 'F#', 'A']
+	'C#': ['C#', 'F', 'G#', 'C'],
+	'Db': ['Db', 'F', 'Ab', 'C'],
+	'D': ['Db', 'F', 'Ab', 'C'],
+	'D#': ['D#', 'G', 'A#', 'D'],
+	'Eb': ['Eb', 'G', 'Bb', 'D'],
+	'E': ['E', 'G#', 'B', 'D#'],
+	'F': ['F', 'A', 'C', 'E'],
+	'F#': ['F#', 'A#', 'C#', 'F'],
+	'Gb': ['Gb', 'Bb', 'Db', 'F'],
+	'G': ['G', 'B', 'D', 'F#'],
+	'G#': ['G#', 'C', 'D#', 'G'],
+	'Ab': ['Ab', 'C', 'Eb', 'G'],
+	'A': ['A', 'C#', 'E', 'G#'],
+	'A#': ['A#', 'D', 'F', 'A'],
+	'Bb': ['Bb', 'D', 'F', 'A'],
+	'B': ['B', 'D#', 'F#', 'A#']
 };
 
 /* MINOR 7CHORDS:  */
 const minor = {
 	'C': ['C', 'Eb', 'G', 'Bb'],
-	'C#': ['D', 'E', 'Ab', 'B'],
+	'C#': ['C#', 'E', 'G#', 'B'],
+	'Db': ['Db', 'E', 'Ab', 'B'],
 	'D': ['D', 'F', 'A', 'C'],
-	'Eb': ['Eb', 'F#', 'Bb', 'C#'],
+	'D#': ['D#', 'F#', 'A#', 'C#'],
+	'Eb': ['Eb', 'Gb', 'Bb', 'Db'],
 	'E': ['E', 'G', 'B', 'D'],
 	'F': ['F', 'Ab', 'C', 'Eb'],
 	'F#': ['F#', 'A', 'C#', 'E'],
+	'Gb': ['Gb', 'A', 'Db', 'E'],
 	'G': ['G', 'Bb', 'D', 'F'],
-	'Ab': ['Ab', 'B', 'Eb', 'F#'],
+	'G#': ['G#', 'B', 'D#', 'F#'],
+	'Ab': ['Ab', 'B', 'Eb', 'Gb'],
 	'A': ['A', 'C', 'E', 'G'],
-	'Bb': ['Bb', 'C#', 'F', 'Ab'],
+	'A#': ['A#', 'C#', 'F', 'G#'],
+	'Bb': ['Bb', 'Db', 'F', 'Ab'],
 	'B': ['B', 'D', 'F#', 'A']
 };
 
@@ -43,7 +53,7 @@ const brow = ['B', 'C#', 'D', 'E', 'F#', 'G', 'A'];
 const crow = ['C', 'D', 'Eb', 'F', 'G', 'Ab', 'Bb'];
 const drow = ['D', 'E', 'F', 'G', 'A', 'Bb', 'C'];
 const erow = ['E', 'F#', 'G', 'A', 'B', 'C', 'D'];
-const frow = ['F', 'G', 'Ab', 'Bb', 'C', 'C#', 'Eb'];
+const frow = ['F', 'G', 'Ab', 'Bb', 'C', 'Db', 'Eb'];
 const grow = ['G', 'A', 'Bb', 'C', 'D', 'Eb', 'F'];
 
 
@@ -87,8 +97,8 @@ function decideWhichPattern()
 
 	// get numbers for indexes representing i, iio, III, iv, v, VI, VII
 	// these patterns are same as normal chord progressions, but minus 1.
-	const patternsFour = [[5, 2, 6], [1, 4, 0], [5, 3, 4], [5, 1, 4], [4, 5, 3], [3, 5, 4], [2, 3, 4], [3, 0, 4], [3, 1, 4], [4, 0, 3], [4, 5, 4], [6, 0, 1], [2, 3, 6]];
-	const patternsThree = [[3, 6], [3, 4], [5, 6], [3, 0]];
+	const patternsFour = [[5, 6, 0, 0], [0, 5, 2, 6], [0, 1, 4, 0], [0, 5, 3, 4], [0, 5, 1, 4], [0, 4, 5, 3], [0, 3, 5, 4], [0, 2, 3, 4], [0, 3, 0, 4], [0, 3, 1, 4], [0, 4, 0, 3], [0, 4, 5, 4], [0, 6, 0, 1], [0, 2, 3, 6]];
+	const patternsThree = [[0, 3, 6], [0, 3, 4], [0, 5, 6], [0, 3, 0], [1, 4,  0]];
 
 	let pattern = [];
 	switch (numChords)
@@ -105,29 +115,13 @@ function decideWhichPattern()
 	}
 
 	const randNum = Math.floor((Math.random() * (pattern.length - 1)));
-	console.log(pattern.length);
-	console.log(randNum);
-	console.log(pattern);
 
 	return pattern[randNum];
 }
 
 
 
-function selectFirstChord()
-{
-	const minorChords = Object.keys(minor).map(key =>
-	{
-		return minor[key];
-	});
-	const possibleFirstChords = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
-
-	return minor[possibleFirstChords[Math.floor(Math.random() * possibleFirstChords.length)]];
-}
-
-
-
-function getNextChords(distinctNums, chosenRow)
+function getChords(distinctNums, chosenRow)
 {
 	const chords = [];
 
@@ -155,7 +149,6 @@ function getNextChords(distinctNums, chosenRow)
 
 function playChords(chords)
 {
-	console.log(chords);
 	const octave = document.getElementById(octaveId).value;
 	chords = chords.map(x => x.map(y => y + octave));
 	const firstNotes = chords.map(x => x = x[0]);
@@ -195,22 +188,17 @@ document.getElementById(generateButtonId).addEventListener("click", () =>
 	Tone.Transport.stop();
 	Tone.Transport.cancel();
 
-	const chords = [];
-	const nextChord = [];
+	let chords = [];
 
-	const firstChord = selectFirstChord();
-	chords.push(firstChord);
-
-	const distinctNums = decideWhichPattern();
-
-	const key = firstChord[0];
+	const decidedPattern = decideWhichPattern();
+	const keys = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
+	const keyNum = Math.floor(Math.random() * (keys.length - 1));
+	const key = keys[keyNum];
 	const chosenRow = getWhichRow(key);
 
-	nextChords = getNextChords(distinctNums, chosenRow);
-	nextChords.forEach(chord => { chords.push(chord) });
+	chords = getChords(decidedPattern, chosenRow);
 
-	nextChords.unshift(firstChord);
-	playChords(nextChords);
+	playChords(chords);
 
 	let generatedText = "";
 	chords.forEach((chord, i) =>
@@ -218,7 +206,7 @@ document.getElementById(generateButtonId).addEventListener("click", () =>
 		const scaleName = chord[0];
 		const majorminor = getMajorMinor(i);
 		generatedText += scaleName + majorminor + ": ";
-		generatedText += chord.join(" ");
+		generatedText += chord.join(", ");
 		generatedText += "\r\n";
 	});
 
